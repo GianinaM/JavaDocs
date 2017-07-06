@@ -38,8 +38,8 @@
       <file leaf-file-name="MyImplementedList.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/exercise/exercise4/MyImplementedList.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="310">
-              <caret line="209" column="4" lean-forward="false" selection-start-line="209" selection-start-column="4" selection-end-line="209" selection-end-column="4" />
+            <state relative-caret-position="409">
+              <caret line="200" column="54" lean-forward="false" selection-start-line="200" selection-start-column="54" selection-end-line="200" selection-end-column="54" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#3229#3230#0" expanded="true" />
@@ -832,7 +832,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1499234898939</updated>
-      <workItem from="1499234901559" duration="24493000" />
+      <workItem from="1499234901559" duration="25187000" />
     </task>
     <servers />
   </component>
@@ -869,10 +869,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24493000" />
+    <option name="totallyTimeSpent" value="25187000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-8" width="1616" height="876" extended-state="6" />
+    <frame x="1912" y="-8" width="1616" height="876" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -884,7 +884,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32898173" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32898173" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -926,8 +926,8 @@
         <state relative-caret-position="299">
           <caret line="40" column="33" lean-forward="false" selection-start-line="40" selection-start-column="33" selection-end-line="40" selection-end-column="33" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#651#660#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#651#660#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -969,10 +969,10 @@
         <state relative-caret-position="355">
           <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1061#1069#0" expanded="true" />
-            <element signature="e#1132#1140#0" expanded="true" />
-            <element signature="e#1185#1193#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#1061#1069#0" expanded="false" />
+            <element signature="e#1132#1140#0" expanded="false" />
+            <element signature="e#1185#1193#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1019,8 +1019,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/exercise/exercise4/MyImplementedList.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="209" column="4" lean-forward="false" selection-start-line="209" selection-start-column="4" selection-end-line="209" selection-end-column="4" />
+        <state relative-caret-position="409">
+          <caret line="200" column="54" lean-forward="false" selection-start-line="200" selection-start-column="54" selection-end-line="200" selection-end-column="54" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#3229#3230#0" expanded="true" />

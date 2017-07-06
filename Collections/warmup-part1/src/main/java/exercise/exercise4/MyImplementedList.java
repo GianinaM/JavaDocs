@@ -207,5 +207,5 @@ public class MyImplementedList<E> implements Iterable<E>, Comparator<E>{
             }
         }
     }
-    
+
 }
