@@ -1,7 +1,9 @@
 package exercise6;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Set;
+import java.lang.*;
 
 /**
  * Create a resizable generic HashMap. When the number of entries exceeds (load capacity * bucket array size)
@@ -41,12 +43,23 @@ public class MyResizableHashMap<K, V> {
     /**
      * The number of entries stored in the Map.
      */
-    private int size;
+    private int size = 0;
+    int my_capacity;
 
     public MyResizableHashMap() {
 
         // TODO Initialize buckets list
+        my_capacity = DEFAULT_BUCKET_ARRAY_SIZE;
+        this.buckets = new Node[my_capacity];
+        for (int  i = 0; i < my_capacity - 1; i++) {
+            this.buckets[i] = new Node<K, V>(new MyEntry(0, 0), i, null);
+        }
     }
+
+    public int getHash(K key) {
+        return Math.abs(key.hashCode()%this.my_capacity);
+    }
+
 
     private void resize() {
         // TODO function that does the rehashing of the HashMap
@@ -59,6 +72,33 @@ public class MyResizableHashMap<K, V> {
 
     public void put(K key, V value) {
         // TODO
+        int my_hashCode = 0;
+        Node next_node = new Node<K, V>(new MyEntry(key, value), my_hashCode, null);
+
+        Node my_node = new Node<K, V>(new MyEntry(key, value), my_hashCode, null);
+        if (key != null) {
+            my_hashCode = this.getHash(key);
+        }
+
+        if (!this.containsKey(key)) {
+            while(buckets[my_hashCode].getNextElement() != null) {
+                next_node = buckets[my_hashCode].getNextElement();
+            }
+            next_node.nextElement = my_node;
+            this.size++;
+        } else {
+            if (key == null) {
+                while (buckets[my_hashCode].getEntry().getKey() != null) {
+                    next_node = buckets[my_hashCode].getNextElement();
+                }
+            } else {
+                while (!buckets[my_hashCode].getEntry().getKey().equals(key)) {
+                    next_node = buckets[my_hashCode].getNextElement();
+                }
+            }
+            next_node.nextElement = my_node;
+            next_node.entry.value = value;
+        }
     }
 
     public Set<K> keySet() {
@@ -78,6 +118,15 @@ public class MyResizableHashMap<K, V> {
 
     public boolean containsKey(K key) {
         // TODO
+        Node next_node = new Node<K, V>(new MyEntry(key, 0), 0, null);
+
+        for (Node<K, V> node : this.buckets){
+            while (node.nextElement != null) {
+                if (node.getEntry().getKey() == null && key == null) return true;
+                if (node.getEntry().getKey().equals(key)) return true;
+                next_node = node.getNextElement();
+            }
+        }
         return false;
     }
 
