@@ -12,6 +12,9 @@ public class QueryBuilder {
     private QueryType queryType;
     private List<Condition> conditions;
 
+    private Object joinTableName;
+    private List<Condition> joinConditions;
+
     public String getValueForQuery(Object value){
         if (value instanceof String){
             return "'" + value + "'";
@@ -31,8 +34,22 @@ public class QueryBuilder {
         return this;
     }
 
+    public QueryBuilder addJoinCondition(Condition joinCondition){
+        if (this.joinConditions == null){
+            this.joinConditions = new ArrayList<>();
+        }
+        this.joinConditions.add(joinCondition);
+        return this;
+    }
+
     public QueryBuilder setTableName(Object tableName){
         this.tableName = tableName;
+
+        return this;
+    }
+
+    public QueryBuilder setJoinTableName(Object joinTableName){
+        this.joinTableName = joinTableName;
 
         return this;
     }
@@ -64,11 +81,47 @@ public class QueryBuilder {
         }
         sql.append(" from " + tableName);
 
+
         boolean whereAdded = false;
         if(conditions != null && !conditions.isEmpty()) {
             for(Condition condition : conditions) {
-                sql.append(whereAdded ? " and" : " where ").append(condition.getColumnName()).append("=")
+                sql.append(whereAdded ? " and " : " where ").append(condition.getColumnName()).append("=")
                         .append(getValueForQuery(condition.getValue()));
+                whereAdded = true;
+            }
+        }
+        return sql.toString();
+    }
+
+    private String createSelectEmployeesQuery(){
+        StringBuilder sql = new StringBuilder();
+        sql.append("select ");
+        boolean isFirst = true;
+        for(ColumnInfo columnInfo : queryColumns) {
+            if(!isFirst) {
+                sql.append(", ");
+            }
+            sql.append(tableName + "." + columnInfo.getDbColumnName());
+            isFirst = false;
+        }
+        sql.append(" from " + tableName);
+        sql.append(" join " + joinTableName + " on ");
+
+        boolean firstJoinCond = true;
+        for (Condition joinCondition : joinConditions) {
+            if (!firstJoinCond) {
+                sql.append(" and ");
+            }
+            sql.append(tableName + "." + joinCondition.getValue());
+            sql.append("=" + joinTableName + "." + joinCondition.getColumnName());
+        }
+
+        boolean whereAdded = false;
+        if(conditions != null && !conditions.isEmpty()) {
+            for(Condition condition : conditions) {
+                sql.append(whereAdded ? " and " : " where UPPER(").append(condition.getColumnName()).
+                        append(") like UPPER('%" + condition.getValue() + "%')");
+
                 whereAdded = true;
             }
         }
@@ -106,12 +159,14 @@ public class QueryBuilder {
         boolean whereAdded = false;
         if (conditions != null  && !conditions.isEmpty()){
             for (Condition condition : conditions) {
-                sql.append(whereAdded ? " and" : " where ").append(condition.getColumnName()).append("=").append(getValueForQuery(condition.getValue()));
+                sql.append(whereAdded ? " and " : " where ").append(condition.getColumnName()).append("=").append(getValueForQuery(condition.getValue()));
                 whereAdded = true;
             }
         }
         return sql.toString();
     }
+
+
 
     private String createInsertQuery(){
         StringBuilder sql = new StringBuilder();
@@ -139,7 +194,11 @@ public class QueryBuilder {
 
     public String createQuery(){
         if (QueryType.SELECT.equals(this.queryType)){
-            return createSelectQuery();
+            if (this.joinTableName != null) {
+                return createSelectEmployeesQuery();
+            } else {
+                return createSelectQuery();
+            }
         } else if (QueryType.INSERT.equals(this.queryType)) {
             return createInsertQuery();
         } else if (QueryType.UPDATE.equals(this.queryType)) {
